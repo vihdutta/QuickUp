@@ -2,12 +2,14 @@ module github.com/vihdutta/fluxum
 
 go 1.17
 
-require fyne.io/fyne/v2 v2.1.2
+require (
+	fyne.io/fyne/v2 v2.1.2
+	github.com/fsnotify/fsnotify v1.4.9
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fredbi/uri v0.0.0-20181227131451-3dcfdacbaaf3 // indirect
-	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/go-gl/gl v0.0.0-20210813123233-e4099ee2221f // indirect
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20211024062804-40e447a793be // indirect
 	github.com/godbus/dbus/v5 v5.0.4 // indirect
