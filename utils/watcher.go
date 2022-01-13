@@ -1,29 +1,14 @@
-package main
+package utils
 
 import (
 	"log"
 
 	"fyne.io/fyne/v2"
-	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/canvas"
-
 	"github.com/fsnotify/fsnotify"
 )
 
-var path = "C:\\Users\\Duttas\\Desktop\\LR Exports\\DSC_0005.JPG"
-
-func main() {
-	a := app.New()
-	w := a.NewWindow("Auto Screenshot Opener")
-	w.Resize(fyne.NewSize(500, 500))
-
-	img := canvas.NewImageFromFile(path)
-
-	go logic(img, w)
-	w.ShowAndRun()
-}
-
-func logic(img *canvas.Image, w fyne.Window) {
+func Watcher(w fyne.Window) {
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
 		log.Fatal(err)
@@ -45,10 +30,8 @@ func logic(img *canvas.Image, w fyne.Window) {
 					return
 				}
 				if event.Op&fsnotify.Write == fsnotify.Write {
-					log.Println(event.Name)
-					path = event.Name
-					img.File = path
-					img.Refresh()
+					log.Println("ok")
+					img := canvas.NewImageFromFile(event.Name)
 					w.SetContent(img)
 				}
 			case err, ok := <-watcher.Errors:
