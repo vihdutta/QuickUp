@@ -8,7 +8,7 @@ import (
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Auto Screenshot Opener")
+	w := a.NewWindow("QuickUp")
 	w.Resize(fyne.NewSize(800, 800))
 
 	go utils.Toolbar(w)
